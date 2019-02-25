@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Cart</title>	
+</head>
+<body>
+	<div class="input">
+		<input type="button" name="" onclick="return addCart()" value ="display a prompt box">
+	</div>
+	<script type="text/javascript">		
+		function addCart() {
+		var x=0;
+		var i=0;		
+		var cartInfo=[];
+		var number = prompt("Enter the number of products");
+			for(i=0;i<number;i++) {
+				var name = prompt("Enter the name of the product","");
+				var description = prompt("Enter the description of the product","");
+				var price = prompt("Enter the price of the product","");				
+				cartInfo.push(
+				{
+			      name: name,
+			    	description: description,
+			    	price:price
+			    });			
+			}
+	   	totalPrice(cartInfo ,number);	   		
+	   	}
+		
+		function totalPrice(cartInfo , number) {			
+			var totalPrice = 0;
+			for(var k=0;k<number;k++)
+			{
+				totalPrice = +totalPrice + +cartInfo[k].price;
+				console.log(totalPrice);
+			}
+			discount(cartInfo,number);
+		}
+
+		function discount(cartInfo ,number) {
+			for(var l=0; l<number ;l++) {
+				var cost = cartInfo[l].price*10/100;
+				var updatedPrice = cartInfo[l].price -cost;
+				alert("Updated Price of "+cartInfo[l].name +" ="+updatedPrice);
+			}
+		}
+	</script>		
+</body>
+</html>
